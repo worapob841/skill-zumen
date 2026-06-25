@@ -15,17 +15,25 @@ It detects and reuses an existing codebase's stack before asking, works greenfie
 
 ## Install
 
-Drop the skill into a project (`.claude/skills/`) or your user config (`~/.claude/skills/`).
-
-**Via npx** ([degit](https://github.com/Rich-Harris/degit) — copies the `skills/zumen/` subdir):
+Use the [`skills`](https://github.com/vercel-labs/skills) CLI — it discovers the skill under `skills/zumen/` and links it into your agent's config:
 
 ```bash
-# project-local (this repo / project only)
-npx degit worapob841/skill-zumen/skills/zumen .claude/skills/zumen
+# add to the current project → .claude/skills/
+npx skills add worapob841/skill-zumen
 
-# or user-global (available in every project)
-npx degit worapob841/skill-zumen/skills/zumen ~/.claude/skills/zumen
+# or install globally for every project → ~/.claude/skills/
+npx skills add worapob841/skill-zumen -g
 ```
+
+Handy variants:
+
+```bash
+npx skills add worapob841/skill-zumen --list             # preview the skills in this repo
+npx skills add worapob841/skill-zumen --skill zumen      # install just this skill by name
+npx skills add worapob841/skill-zumen -a claude-code -y  # non-interactive, target Claude Code
+```
+
+The CLI auto-detects which agents you have installed (pass `-a claude-code`, repeatable, to pin specific ones). Scope is project-local by default; `-g` installs to your user config.
 
 **Manual (git):**
 
@@ -34,7 +42,7 @@ git clone https://github.com/worapob841/skill-zumen.git
 cp -r skill-zumen/skills/zumen ~/.claude/skills/zumen
 ```
 
-Any installer that copies a GitHub subdirectory works — the part that matters is the destination layout: `.claude/skills/zumen/SKILL.md`. Reload Claude Code afterward so it discovers the skill.
+Reload Claude Code afterward so it discovers the skill.
 
 ## Use
 
