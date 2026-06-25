@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This repo is a **single Claude Code skill**, `zumen` — the only entry (so far) under `agents-skill-catalog/`. It is **prompt/content engineering, not application code**: every file is Markdown that an *agent reads and executes* at runtime. There is no source code, package manifest, or build/test/lint tooling, and it is not a git repo.
+This repo packages a Claude Code **skill**, `zumen`, under [`skills/zumen/`](./skills/zumen/) — the layout a subdir-copy installer pulls from (see [`README.md`](./README.md) for the `npx degit` install). It is **prompt/content engineering, not application code**: every file is Markdown that an *agent reads and executes* at runtime. There is no source code, package manifest, or build/test/lint tooling.
 
-The `zumen` skill plans projects: it interviews the user one question at a time, co-designs an architecture, phases the work, writes a `plans/` doc bundle, and then **stops before any implementation**. Working here means *maintaining the skill's instructions and output templates* — not running them.
+The `zumen` skill plans projects: it interviews the user one question at a time, co-designs an architecture, phases the work, writes a `plans/` doc bundle, and then **stops before any implementation**. Working in this repo means *maintaining the skill's instructions and output templates* — not running them.
+
+**This `CLAUDE.md` lives at the repo root, deliberately outside `skills/zumen/`** — it guides *developing* the skill and must not ship into installs (which copy only `skills/zumen/`). **Paths below are relative to `skills/zumen/`** unless prefixed (e.g. `SKILL.md` means `skills/zumen/SKILL.md`).
 
 > **Two different CLAUDE.md files are in play.** *This* one guides editing the skill. The skill's own text repeatedly says to "conform to the host repo's CLAUDE.md" — that refers to a *different* CLAUDE.md in whatever project the skill is later run inside. Don't conflate them; nothing in this repo should bake in another project's specifics.
 
